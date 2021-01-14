@@ -5,7 +5,7 @@
 ]{report}
 
 % Set up margins
-\usepackage[margin=1in]{geometry}
+\usepackage[a4paper, margin=.5in]{geometry}
 
 % Configure fonts
 \usepackage{unicode-math}
@@ -53,6 +53,11 @@
 \cftsetindents{subsection}{2em}{1em}
 \cftsetindents{subsubsection}{3em}{1em}
 \cftsetindents{paragraph}{4em}{1em}
+
+% Make tables smaller than the rest of the document
+\let\oldlongtable\longtable
+\let\oldendlongtable\endlongtable
+\renewenvironment{longtable}{\footnotesize\oldlongtable}{\oldendlongtable}
 
 % Disable per-paragraph indenting
 \usepackage{parskip}[indent=0pt]
