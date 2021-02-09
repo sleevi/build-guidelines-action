@@ -24,8 +24,9 @@ RUN tlmgr install \
   xecjk
 
 # Install bash
-RUN apk add bash coreutils
+RUN apk add --no-cache bash coreutils
 
+# Install NotoSerif fonts
 RUN mkdir -p /tmp/fonts && \
     mkdir -p /usr/share/fonts && \
     wget -O /tmp/fonts/noto.zip https://noto-website-2.storage.googleapis.com/pkgs/NotoSerifCJKjp-hinted.zip && \
@@ -35,9 +36,15 @@ RUN mkdir -p /tmp/fonts && \
     fc-cache -f -v && \
     rm -rf /tmp/fonts
 
+# Install Python3 and Pantable
+RUN apk add --update --no-cache python3 py3-pip py3-numpy
+RUN python3 -m pip install pantable==0.13.4
+
 RUN mkdir -p /cabforum
 RUN mkdir -p /cabforum/templates
 RUN mkdir -p /cabforum/filters
+
+RUN wget -O /cabforum/filters/pandoc-list-table.lua "https://raw.githubusercontent.com/bpj/pandoc-list-table/94121a7dae0cb1300fde5ecc5268d3a58fed3d91/pandoc-list-table.lua"
 
 COPY entrypoint.sh /cabforum/entrypoint.sh
 COPY templates/ /cabforum/templates/

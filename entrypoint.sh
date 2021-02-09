@@ -49,7 +49,7 @@ if [ -n "${INPUT_DIFF_FILE}" ]; then
   fi
 fi
 
-PANDOC_ARGS=( -f markdown+gfm_auto_identifiers --table-of-contents -s --no-highlight )
+PANDOC_ARGS=( -f markdown+gfm_auto_identifiers --table-of-contents -s --no-highlight --lua-filter=/cabforum/filters/pandoc-list-table.lua --filter=/usr/bin/pantable )
 
 if [ "$INPUT_DRAFT" = "true" ]; then
   echo "Draft detected. Adding draft watermark"
