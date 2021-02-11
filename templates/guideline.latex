@@ -1,17 +1,16 @@
 \PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
 
 \documentclass[
+  a4paper,
   12pt,
 ]{report}
 
 % Set up margins
-\usepackage[a4paper, margin=.5in]{geometry}
+\usepackage[a4paper, includehead, includefoot, margin=0.5in]{geometry}
 
 % Configure fonts
 \usepackage{unicode-math}
 \usepackage{xeCJK}
-\defaultfontfeatures{Scale=MatchLowercase}
-\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \usepackage[default]{sourceserifpro}
 \usepackage[ttdefault]{sourcecodepro}
 \usepackage{sourcesanspro}
